@@ -27,7 +27,6 @@ html {
     background:  #333367;
     background-size: 224px;
 }
-
 code {
     font-family: Menlo,
     Monaco,
@@ -38,7 +37,6 @@ code {
     Courier New,
     monospace;
 }
-/* estilos de la barra de navegación*/
 .hamburger {
     cursor: pointer;
 }

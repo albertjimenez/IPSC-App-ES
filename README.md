@@ -26,7 +26,7 @@ To install and run the application locally, follow these steps:
 
     ```bash
     git clone https://github.com/albertjimenez/IPSC-App-ES.git
-    cd ipsc-events
+    cd ipsc-shootings
     ```
 
 2. Install dependencies using `pnpm`:
@@ -46,7 +46,7 @@ To install and run the application locally, follow these steps:
 ## Project Structure
 
 - `src/components`: Contains the application's components.
-    - `ReactTSEventCard.tsx`: Card component to display event information.
+    - `PReactEventCard.jsx`: Card component to display event information.
     - `ReactCardBoxLayout.tsx`: Layout component that includes the search and event listing functionality.
 - `src/layouts`: Contains the layouts used in the application.
 - `public`: Contains static assets like images and JSON files.

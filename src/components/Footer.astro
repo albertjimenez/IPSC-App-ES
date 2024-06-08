@@ -1,29 +1,37 @@
 ---
-
+const today = new Date();
 ---
 <footer class="fancy-footer">
     <div class="footer-content">
-        <p>© 2024 IPSC. All rights reserved. Designed by <a class="custom-link" href="https://github.com/albertjimenez" target="_blank" referrerpolicy="no-referrer">Albert Sendrós</a></p>
+        <p>© {today.getFullYear()} IPSC. All rights reserved. Designed by <a class="custom-link"
+                                                                             href="https://github.com/albertjimenez"
+                                                                             target="_blank"
+                                                                             referrerpolicy="no-referrer">Albert
+            Sendrós</a></p>
     </div>
 </footer>
 <style>
+
     .fancy-footer {
         background-color: #23262d;
         color: white;
-        padding: 20px 0;
         text-align: center;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        position: fixed;
+        padding: 5px 0;
     }
 
     .footer-content {
-        display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .footer-content p {
-        margin: 0;
-        font-size: 14px;
+        margin: 0 auto;
     }
+
     /* Chip style */
     a.custom-link {
         display: inline-block; /* Display as inline block */
@@ -46,5 +54,4 @@
         background-color: #0056b3; /* Background color when clicked */
         color: white; /* Text color when clicked */
     }
-
 </style>

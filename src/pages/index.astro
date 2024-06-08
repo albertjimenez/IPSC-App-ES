@@ -1,15 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ReactCardBoxLayout from "../components/ReactCardBoxLayout";
-export interface EventProps {
-    name: string;
-    tipoArma: 'Mini Rifle' | 'PCC' | 'Pistola';
-    datetime: Date;
-    url?: string;
-    notes?: string;
-    location: string;
-    level?: string;
-}
 ---
 <Layout title="IPSC App">
     <main>
@@ -17,7 +8,8 @@ export interface EventProps {
         <p class="instructions">
             En esta aplicación podrás encontrar las próximas tiradas que se harán en España de <strong>IPSC</strong>.
         </p>
-        <ReactCardBoxLayout client:load/>
+
+        <ReactCardBoxLayout client:idle/>
 
     </main>
 </Layout>
@@ -26,11 +18,9 @@ export interface EventProps {
     main {
         margin: auto;
         padding: 1rem;
-        width: 800px;
-        max-width: calc(100% - 2rem);
-        color: white;
+        width: 75%;
         font-size: 20px;
-        line-height: 1.6;
+        color: white;
     }
 
     .astro-a {

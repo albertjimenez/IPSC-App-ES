@@ -1,15 +1,8 @@
-import React from "preact";
-import type {EventProps} from "./models/EventCard.ts";
-import "./ReactTSEventCard.css"
+import "./PReactEventCard.css";
 
-function getLang(): string {
-    if (navigator?.languages)
-        return navigator.languages[0];
-    return navigator.language;
-}
-export const ReactTSEventCard: React.FunctionalComponent<EventProps> = (eventProps: EventProps) => {
+const PReactEventCard = (eventProps) => {
     const {name, tipoArma, datetime, url, notes, location, level} = eventProps;
-    const pngPaths: { [key in EventProps['tipoArma']]: string } = {
+    const pngPaths = {
         "Pistola": "/Pistola.png",
         "PCC": "/PCC.png",
         'Mini Rifle': "/Mini-Rifle.png"
@@ -17,9 +10,8 @@ export const ReactTSEventCard: React.FunctionalComponent<EventProps> = (eventPro
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
     const pngPath = pngPaths[tipoArma];
 
-    return (
-        <li className="link-card">
-            <a href={url} target={'_blank'} rel={'noreferrer'}>
+    return <li className="link-card">
+        <a href={url}>
                 <div className="card-header">
                     <h2>{name} <span>&rarr;</span></h2>
                     <div className="image-container">
@@ -35,8 +27,7 @@ export const ReactTSEventCard: React.FunctionalComponent<EventProps> = (eventPro
                     {level && <p><strong>Nivel:</strong> {level}</p>}
                 </div>
             </a>
-        </li>
-    );
+    </li>;
 }
 
-export default ReactTSEventCard;
+export default PReactEventCard;

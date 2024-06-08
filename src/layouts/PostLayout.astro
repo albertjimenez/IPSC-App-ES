@@ -1,0 +1,70 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import {ViewTransitions} from 'astro:transitions';
+import {CollectionEntry} from "astro:content";
+import "../components/PReactEventCard.css";
+const {frontmatter} = Astro.props;
+const {title, gunType, tags, date, location, level} = frontmatter;
+const dateOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+};
+---
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Eventos de IPSC en España"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <link rel="stylesheet" href="/global.css"/>
+    <title>Eventos</title>
+    <ViewTransitions/>
+</head>
+
+<Header title="IPSC" subtitle="Eventos"/>
+<main>
+    <div class="link-card">
+        <div class="card-header">
+            <h2>{title} <span>&rarr;</span></h2>
+        </div>
+        <hr class="fancy-hr"/>
+        <div class="card-body">
+            <p><strong>Tipo de Arma:</strong> {gunType}</p>
+            <p><strong>Fecha y
+                Hora:</strong> {new Date(date).toLocaleDateString("es-ES", dateOptions as Intl.DateTimeFormatOptions)}
+            </p>
+            <p><strong>Ubicación:</strong> {location}</p>
+            {level && <p><strong>Nivel:</strong> {level}</p>}
+        </div>
+    </div>
+    <slot/>
+</main>
+<Footer/>
+</html>
+
+<style>
+    html {
+        font-family: system-ui, sans-serif;
+        background: #333367;
+    }
+
+    main {
+        margin: auto;
+        padding: 1rem;
+        width: 75%;
+        font-size: 20px;
+    }
+
+</style>
+
+<script>
+    document?.querySelector('.hamburger')?.addEventListener('click', () => {
+        document?.querySelector('.nav-links')?.classList.toggle('expanded');
+    });
+</script>

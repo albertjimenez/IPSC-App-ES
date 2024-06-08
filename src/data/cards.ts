@@ -1,9 +1,9 @@
-[
+export const cards = [
   {
     "name": "Torneo Nacional",
     "tipoArma": "Pistola",
     "datetime": "2024-06-01T00:00:00.000Z",
-    "url": "https://example.com/torneo-nacional",
+    "url": "/shootings/first",
     "notes": "Registro abierto hasta el 25 de mayo.",
     "location": "Madrid, España",
     "level": "Nacional"
