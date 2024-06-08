@@ -1,37 +1,10 @@
-import {useState} from 'preact/hooks';
+import {useEffect, useState} from 'preact/hooks';
 import "./ReactCardBoxLayout.css";
-import ReactTSEventCard from "./ReactTSEventCard.tsx";
+import ReactTSEventCard from "./ReactTSEventCard";
+import cards from "../data/cards.json";
 
 
 export default function ReactCardBoxLayout() {
-    const cards = [
-        {
-            name: 'Torneo Nacional',
-            tipoArma: 'Pistola',
-            datetime: new Date('2024-06-01'),
-            url: 'https://example.com/torneo-nacional',
-            notes: 'Registro abierto hasta el 25 de mayo.',
-            location: 'Madrid, España',
-            level: 'Nacional'
-        },
-        {
-            name: 'Curso de Tiro Práctico',
-            tipoArma: 'Mini Rifle',
-            datetime: new Date('2024-06-15'),
-            url: 'https://example.com/curso-tiro',
-            notes: 'Inscripción obligatoria.',
-            location: 'Barcelona, España'
-        },
-        {
-            name: 'Competición Regional',
-            tipoArma: 'PCC',
-            datetime: new Date('2024-07-20'),
-            url: 'https://example.com/competicion-regional',
-            notes: 'Traer equipo completo.',
-            location: 'Sevilla, España',
-            level: 'Regional'
-        }
-    ];
     const [terms, setTerms] = useState("");
     return <>
         <label>
