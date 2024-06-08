@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+import PistolaPNG from "../../images/Pistola.png";
+import PCC from "../../images/PCC.png";
+import MiniRifle from "../../images/Mini-Rifle.png"
+export interface GunIconProps {
+    gunType: "PCC | Mini Rifle | Pistola";
+}
+
+const {gunType} = Astro.props as GunIconProps;
+const pngPaths = {
+    Pistola: PistolaPNG,
+    PCC: PCC,
+    'Mini Rifle': MiniRifle
+};
+const pngPath = pngPaths[gunType];
+---
+<Image alt={pngPath} src={pngPath} width="50" height="50"/>

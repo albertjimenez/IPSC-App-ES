@@ -1,0 +1,98 @@
+html.dark {
+    background-color: #13151a;
+    color: #fff;
+}
+
+.dark .nav-links a {
+    color: #fff;
+}
+.dark .link-card {
+    background-color: #23262d;
+}
+
+:root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+            45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%
+    );
+}
+
+html {
+    font-family: system-ui, sans-serif;
+    background:  #333367;
+    background-size: 224px;
+}
+
+code {
+    font-family: Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+/* estilos de la barra de navegación*/
+.hamburger {
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: #ff9776;
+}
+
+.nav-links {
+    width: 100%;
+    top: 2rem;
+    left: 10px;
+    background-color: --accent;
+    display: none;
+    margin: 0;
+}
+
+.nav-links a {
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav-links a:hover, a:focus {
+    background-color: #ff9776;
+}
+
+.expanded {
+    display: unset;
+}
+
+@media screen and (min-width: 636px) {
+    .nav-links {
+        margin-left: 5em;
+        display: block;
+        position: static;
+        width: auto;
+        background: none;
+    }
+
+    .nav-links a {
+        display: inline-block;
+
+    }
+
+    .hamburger {
+        display: none;
+    }
+}

@@ -1,0 +1,52 @@
+---
+import ThemeIcon from "./ThemeIcon.astro";
+import Hamburguer from "./Hamburguer.astro";
+import Navigation from "./Navigation.astro";
+export interface HeaderProps {
+    title: string;
+    subtitle?: string;
+}
+const {title, subtitle} = Astro.props as HeaderProps;
+---
+<header class="styled-header">
+    <nav>
+        <Hamburguer/>
+        <Navigation/>
+    </nav>
+    <h1 class="header-title">{title}</h1>
+    {subtitle && <h2 class="header-subtitle">{subtitle}</h2>}
+    <ThemeIcon/>
+</header>
+
+<style>
+    .styled-header {
+        text-align: center;
+        background: linear-gradient(90deg, rgba(var(--accent-dark), 66%), rgba(var(--accent-light), 33%));
+        border-bottom: 1px solid rgba(var(--accent-light), 25%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Adjust the gap as needed */
+        padding: 10px;
+    }
+
+    .header-title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+
+    .header-subtitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: rgba(var(--accent-light), 75%);
+        margin: 0.5rem 0 0;
+    }
+
+</style>

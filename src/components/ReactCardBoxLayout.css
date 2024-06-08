@@ -1,0 +1,67 @@
+.styled-input {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background: rgba(var(--accent-dark), 0.5);
+    border: 1px solid rgba(var(--accent-light), 25%);
+    border-radius: 8px;
+    outline: none;
+    transition: background 0.3s, border-color 0.3s;
+}
+.link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+}
+.styled-input::placeholder {
+    color: rgba(var(--accent-light), 60%);
+}
+
+.styled-input:focus {
+    background: rgba(var(--accent-dark), 0.7);
+    border-color: rgba(var(--accent-light), 50%);
+}
+.styled-input {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background: rgba(var(--accent-dark), 0.5);
+    border: 1px solid rgba(var(--accent-light), 25%);
+    border-radius: 8px;
+    outline: none;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.styled-input::placeholder {
+    color: rgba(var(--accent-light), 60%);
+}
+
+.styled-input:focus {
+    background: rgba(var(--accent-dark), 0.7);
+    border-color: rgba(var(--accent-light), 50%);
+}
+.container {
+    display: grid;
+    justify-content: center; /* Center the elements horizontally */
+    padding: 15px; /* Add some padding around the container */
+}
+
+.input-field {
+    flex: 1;
+    min-width: 100px;
+    box-sizing: content-box; /* Includes padding and border in the element's total width and height */
+}
+
+/* Style for the submit button */
+.submit-button {
+    box-sizing: content-box; /* Includes padding and border in the element's total width and height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .input-field, .submit-button {
+        flex: 100%; /* Make the input and button stack vertically */
+    }
+}
