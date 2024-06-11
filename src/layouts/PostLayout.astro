@@ -1,20 +1,43 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import {ViewTransitions} from 'astro:transitions';
-import {CollectionEntry} from "astro:content";
 import "../components/PReactEventCard.css";
-const {frontmatter} = Astro.props;
-const {title, gunType, tags, date, location, level} = frontmatter;
-const dateOptions = {
+import EventCard from "../components/models/EventCard";
+const {
+    title,
+    gunType,
+    tags,
+    date,
+    location,
+    level,
+    url,
+    numStages,
+    telephoneNumber,
+    notes,
+    email
+} = Astro.props.frontmatter as EventCard;
+const dateOptions: Intl.DateTimeFormatOptions = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
-    second: 'numeric'
+    hour12: false
 };
+const formattedDate = new Date(date).toLocaleDateString("es-ES", dateOptions);
+const rounds = numStages * 20;
+const urlPlaybook = () => {
+    switch (gunType) {
+        case "PCC":
+            return "https://cdn.website-editor.net/s/6dcfef937ddc4a15a23cbe9c69efbdd7/files/uploaded/RT%2520-%2520IPSC-REGLAMENTO%2520CARABINA%2520CALIBRE%2520PISTOLA.pdf?Expires=1720604209&Signature=InY9jE8kRfUDafy46XZnKeqCrrT4qkB2fHrpj79MV7B5it1KoVYfdabV~Z6rgxqFmZ3rjQggUG8tnSU5Ru~6UzxYAYQhQwI-8Pu3CTYNg6iuDItqhqKQ96ti4ZAvHisqCEMoUAB8Cv51pHeVk-cMfvC6TOJmxuHYYqymFwvgXd6tX0WFY6j3ESzRrXURZ2-9LCO53Z42IdR4SECYslhjdNGyDfUuJJ7SlrSFA8ftHBI8SKdWaO1hIGNr1jggij3Xsz3zyte9w1YEaRW7jIHLO8Wcty0yuk8CRPOuGDcJ1vTGBP5npBm3AsDpqIgqLpwvYOSRoGi9Esiw3Z9MUy~4UA__&Key-Pair-Id=K2NXBXLF010TJW";
+        case "Mini-Rifle":
+            return "https://cdn.website-editor.net/s/6dcfef937ddc4a15a23cbe9c69efbdd7/files/uploaded/RT%2520-%2520IPSC-REGLAMENTO%2520MINI%2520RIFLE.pdf?Expires=1720604209&Signature=peHpSHFvcHf-sSdJRz8uyXSKEvp1ngQ-WRy03iHpPehmAcMNl5MyUKsDHdROKsjxXvRYgtsaTJB-iaTukrNkRY74cfwT~PEdql260b68esStPDNQoCRhsloyvsyA8keQUMfyfvBzicR605FOjDhZ0gfqLGmCVE1U1FSrRZvjHVQURobcuYfBwOCkbz48rGrbLyOaitJmi8M2d6Zh-qi2~LLm03OystHAA8~-jud0Y7TyDdUcGlqaG0fWew7BA-qHaM9khwmyUgEq545L8kkrptZz5wsHnf8HOKuwp7P0VCyIVf9j97NT1Y18YLnqRqY2mwllGHf6kMIkKSti2aj4Qg__&Key-Pair-Id=K2NXBXLF010TJW";
+        case "Pistola":
+            return "https://www.ipsc.org/wp-content/uploads/2023/07/Reglamento-IPSC-Para-Competencias-de-Arma-Corta-2023.pdf";
+
+    }
+}
 ---
 <html lang="es">
 <head>
@@ -23,24 +46,68 @@ const dateOptions = {
     <meta name="viewport" content="width=device-width"/>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <link rel="stylesheet" href="/global.css"/>
-    <title>Eventos</title>
-    <ViewTransitions/>
+    <title>Tirada: {title}</title>
 </head>
 
-<Header title="IPSC" subtitle="Eventos"/>
+<Header title="Eventos"/>
 <main>
-    <div class="link-card">
-        <div class="card-header">
-            <h2>{title} <span>&rarr;</span></h2>
-        </div>
-        <hr class="fancy-hr"/>
-        <div class="card-body">
-            <p><strong>Tipo de Arma:</strong> {gunType}</p>
-            <p><strong>Fecha y
-                Hora:</strong> {new Date(date).toLocaleDateString("es-ES", dateOptions as Intl.DateTimeFormatOptions)}
-            </p>
-            <p><strong>Ubicación:</strong> {location}</p>
-            {level && <p><strong>Nivel:</strong> {level}</p>}
+    <div class="main-content">
+        <h1>{title} en {location}</h1>
+
+        <p>Bienvenidos a la entrada del blog detallada sobre {title} en {location}. Este post proporciona toda la
+            información que necesitas saber sobre el evento.</p>
+
+        <h2>Detalles del Evento</h2>
+        <ul>
+            <li><strong>Título:</strong> {title}</li>
+            <li><strong>Tipo de Arma:</strong> {gunType}</li>
+            <li><strong>Fecha:</strong> {formattedDate}</li>
+            <li><strong>Ubicación:</strong> {location}</li>
+            <li><strong>Nivel:</strong> {level || "Sin especificar"}</li>
+            <li><strong>Número de stages:</strong> {numStages}</li>
+        </ul>
+
+        <h2>Descripción del Evento</h2>
+        <p>Únete a nosotros para un emocionante concurso de tiro IPSC en {location}.</p>
+
+        <h3>Qué Traer</h3>
+        <ul>
+            <li>Arma {gunType}</li>
+            <li>Munición (mínimo {rounds} balas)</li>
+            <li>Protección para los ojos y los oídos</li>
+            <li>Equipo de tiro (cinturón, funda, portacargadores)</li>
+            <li>Snacks y agua</li>
+        </ul>
+
+        <h3>Reglas de Seguridad</h3>
+        <strong><a href={urlPlaybook()}>Enlace al reglamento de {gunType}</a></strong>
+        <ul>
+            <li><strong>1:</strong> Mantén siempre el arma apuntando en una dirección segura.</li>
+            <li><strong>2:</strong> Mantén siempre el dedo fuera del gatillo hasta que estés listo para disparar.</li>
+            <li><strong>3:</strong> Mantén siempre el arma descargada hasta que esté lista para usar.</li>
+            <li><strong>4:</strong> Sigue todas las órdenes e instrucciones de los oficiales de campo.</li>
+            <li><strong>5:</strong> Usa protección para los ojos y los oídos en todo momento mientras estés en el campo
+                de tiro.
+            </li>
+        </ul>
+
+        <p>¡Esperamos verte en el evento y deseamos a todos los participantes la mejor de las suertes!</p>
+
+        <h3>Inscripción</h3>
+        <p>Para realizar la inscripción usa uno de estos canales.</p>
+        <p>{telephoneNumber && <a href={`tel:${telephoneNumber}`} class="telephone-link">{telephoneNumber}</a>}</p>
+        <p>{url && <a href={url} class="url-link">Página web</a>}</p>
+        <p>{email && <a href={`mailto:${email}`} target="_blank" referrerpolicy="no-referrer" class="email-link">Correo
+            electrónico</a>}</p>
+
+        <h3>Notas</h3>
+        {notes && <p>{notes}</p>}
+
+        <p>¡Nos vemos en {location}!</p>
+        <div class="tags-container">
+            {tags.map(tag => (
+                    <span class="tag-chip">{tag}</span>
+            ))}
         </div>
     </div>
     <slot/>
@@ -59,6 +126,148 @@ const dateOptions = {
         padding: 1rem;
         width: 75%;
         font-size: 20px;
+    }
+
+    h1, h2, h3, h4 {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+
+    h1 {
+        font-size: 3rem;
+        text-align: center;
+        margin: 2rem 0 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+    }
+
+    p, ul, li {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0.5rem 0;
+    }
+
+    ul {
+        padding-left: 1.5rem;
+    }
+
+    a {
+        color: rgb(var(--accent-light));
+        text-decoration: none;
+        border: 1px solid rgba(var(--accent-light), 0.5);
+        border-radius: 15px;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    a:hover {
+        background-color: rgba(var(--accent-light), 0.1);
+    }
+
+    .fancy-hr {
+        border: 0;
+        height: 2px;
+        background: var(--accent-gradient);
+        margin: 1.5rem 0;
+    }
+
+    .image-container {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: white;
+        overflow: hidden;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .card-body {
+        padding: 1rem;
+        background: #23262d;
+        border-radius: 8px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .main-content {
+        width: 800px;
+        max-width: calc(100% - 2rem);
+        margin: auto;
+        padding: 1rem;
+    }
+
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .tag-chip {
+        background-color: rgba(var(--accent-light), 0.2);
+        border: 1px solid rgba(var(--accent-light), 0.5);
+        border-radius: 15px;
+        color: rgb(var(--accent-light));
+        padding: 0.5rem 1rem;
+        margin: 0.25rem;
+        display: inline-block;
+    }
+
+    .telephone-link {
+        color: rgb(var(--accent-light));
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(var(--accent-light), 0.5);
+    }
+
+    .telephone-link:hover,
+    .telephone-link:focus {
+        text-decoration: underline;
+    }
+
+    .email-link {
+        color: #4CAF50; /* Green color for email links */
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(76, 175, 80, 0.5);
+    }
+
+    .email-link:hover,
+    .email-link:focus {
+        text-decoration: underline;
+    }
+
+    .url-link {
+        color: #2196F3; /* Blue color for URL links */
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(33, 150, 243, 0.5);
+    }
+
+    .url-link:hover,
+    .url-link:focus {
+        text-decoration: underline;
     }
 
 </style>

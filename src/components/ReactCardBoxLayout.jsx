@@ -1,10 +1,9 @@
 import {useState} from 'preact/hooks';
 import "./ReactCardBoxLayout.css";
 import PReactEventCard from "./PReactEventCard.jsx";
-import {cards} from "../data/cards.ts";
 
 
-export default function ReactCardBoxLayout() {
+export default function ReactCardBoxLayout({cards = []}) {
     const [terms, setTerms] = useState("");
     return <>
         <label>
@@ -25,7 +24,9 @@ export default function ReactCardBoxLayout() {
 
         <ul role="list" className="link-card-grid">
             {cards.filter(ev => {
-                const fields = [ev.name, ev.location, ev.tipoArma];
+                if (!ev.telephoneNumber && !ev.url && !ev.email)
+                    throw new Error("A post should contain either a 'telephoneNumber' or a 'url' or an 'email'");
+                const fields = [ev.title, ev.location, ev.gunType];
                 if (terms && terms.length > 0)
                     return fields.some(f => f?.trim().toLowerCase().includes(terms.trim().toLowerCase()));
                 return true

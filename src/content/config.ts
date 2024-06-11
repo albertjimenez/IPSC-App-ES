@@ -12,7 +12,12 @@ const postsCollection = defineCollection({
             tags: z.array(z.string()),
             date: z.coerce.date(),
             location: z.string(),
-            level: z.string(),
+            level: z.string().nullable().default("Nivel no especificado"),
+            url: z.string().nullable(),
+            numStages: z.number().default(6),
+            telephoneNumber: z.number().nullable(),
+            email: z.string().nullable(),
+            notes: z.string().nullable(),
         }),
 });
 

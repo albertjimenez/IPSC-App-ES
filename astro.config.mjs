@@ -6,4 +6,5 @@ export default defineConfig({
     integrations: [
         preact(), mdx()
     ],
+    prefetch: true,
 });
