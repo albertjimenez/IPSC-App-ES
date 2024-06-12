@@ -1,20 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ReactCardBoxLayout from "../components/ReactCardBoxLayout";
-import {getCollection, getEntry} from 'astro:content';
-import EventCard from "../components/models/EventCard";
+import {getCollection} from 'astro:content';
+import type EventCard from "../components/models/EventCard";
 const allShootings = await getCollection('shootings');
-const cards: [EventCard] = allShootings.map(aPost => {
+const cards: EventCard[] = allShootings.map(aPost => {
     return {slug: aPost.slug, ...aPost.data} as EventCard;
 });
 ---
 <Layout title="IPSC App">
     <main>
-        <h1><span class="text-gradient">IPSC </span>APP</h1>
+        <h1><span class="text-gradient">Próximas </span>tiradas</h1>
         <p class="instructions">
             En esta aplicación podrás encontrar las próximas tiradas que se harán en España de <strong>IPSC</strong>.
         </p>
-
         <ReactCardBoxLayout client:idle cards={cards}/>
 
     </main>

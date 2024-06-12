@@ -9,7 +9,6 @@ html.dark {
 .dark .link-card {
     background-color: #23262d;
 }
-
 :root {
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
@@ -17,14 +16,14 @@ html.dark {
     --accent-gradient: linear-gradient(
             45deg,
             rgb(var(--accent)),
-            rgb(var(--accent-light)) 30%,
+            rgb(var(--accent-light)) 10%,
             white 60%
     );
 }
 
 html {
     font-family: system-ui, sans-serif;
-    background:  #333367;
+    background-color: #0056b3;
     background-size: 224px;
 }
 code {

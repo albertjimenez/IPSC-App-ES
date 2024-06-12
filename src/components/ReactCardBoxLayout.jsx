@@ -21,7 +21,7 @@ export default function ReactCardBoxLayout({cards = []}) {
                 }}
             />
         </label>
-
+        <hr className="fancy-hr"/>
         <ul role="list" className="link-card-grid">
             {cards.filter(ev => {
                 if (!ev.telephoneNumber && !ev.url && !ev.email)

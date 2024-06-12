@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../components/PReactEventCard.css";
-import EventCard from "../components/models/EventCard";
+import type EventCard from "../components/models/EventCard";
 const {
     title,
     gunType,
@@ -10,7 +10,7 @@ const {
     date,
     location,
     level,
-    url,
+    locationURL: url,
     numStages,
     telephoneNumber,
     notes,
@@ -31,7 +31,7 @@ const urlPlaybook = () => {
     switch (gunType) {
         case "PCC":
             return "https://cdn.website-editor.net/s/6dcfef937ddc4a15a23cbe9c69efbdd7/files/uploaded/RT%2520-%2520IPSC-REGLAMENTO%2520CARABINA%2520CALIBRE%2520PISTOLA.pdf?Expires=1720604209&Signature=InY9jE8kRfUDafy46XZnKeqCrrT4qkB2fHrpj79MV7B5it1KoVYfdabV~Z6rgxqFmZ3rjQggUG8tnSU5Ru~6UzxYAYQhQwI-8Pu3CTYNg6iuDItqhqKQ96ti4ZAvHisqCEMoUAB8Cv51pHeVk-cMfvC6TOJmxuHYYqymFwvgXd6tX0WFY6j3ESzRrXURZ2-9LCO53Z42IdR4SECYslhjdNGyDfUuJJ7SlrSFA8ftHBI8SKdWaO1hIGNr1jggij3Xsz3zyte9w1YEaRW7jIHLO8Wcty0yuk8CRPOuGDcJ1vTGBP5npBm3AsDpqIgqLpwvYOSRoGi9Esiw3Z9MUy~4UA__&Key-Pair-Id=K2NXBXLF010TJW";
-        case "Mini-Rifle":
+        case "Mini Rifle":
             return "https://cdn.website-editor.net/s/6dcfef937ddc4a15a23cbe9c69efbdd7/files/uploaded/RT%2520-%2520IPSC-REGLAMENTO%2520MINI%2520RIFLE.pdf?Expires=1720604209&Signature=peHpSHFvcHf-sSdJRz8uyXSKEvp1ngQ-WRy03iHpPehmAcMNl5MyUKsDHdROKsjxXvRYgtsaTJB-iaTukrNkRY74cfwT~PEdql260b68esStPDNQoCRhsloyvsyA8keQUMfyfvBzicR605FOjDhZ0gfqLGmCVE1U1FSrRZvjHVQURobcuYfBwOCkbz48rGrbLyOaitJmi8M2d6Zh-qi2~LLm03OystHAA8~-jud0Y7TyDdUcGlqaG0fWew7BA-qHaM9khwmyUgEq545L8kkrptZz5wsHnf8HOKuwp7P0VCyIVf9j97NT1Y18YLnqRqY2mwllGHf6kMIkKSti2aj4Qg__&Key-Pair-Id=K2NXBXLF010TJW";
         case "Pistola":
             return "https://www.ipsc.org/wp-content/uploads/2023/07/Reglamento-IPSC-Para-Competencias-de-Arma-Corta-2023.pdf";
@@ -96,8 +96,8 @@ const urlPlaybook = () => {
         <h3>Inscripción</h3>
         <p>Para realizar la inscripción usa uno de estos canales.</p>
         <p>{telephoneNumber && <a href={`tel:${telephoneNumber}`} class="telephone-link">{telephoneNumber}</a>}</p>
-        <p>{url && <a href={url} class="url-link">Página web</a>}</p>
-        <p>{email && <a href={`mailto:${email}`} target="_blank" referrerpolicy="no-referrer" class="email-link">Correo
+        <p>{url && <a href={url} target="_blank" referrerpolicy="no-referrer" class="url-link">Página web</a>}</p>
+        <p>{email && <a href={`mailto:${email}`} class="email-link">Correo
             electrónico</a>}</p>
 
         <h3>Notas</h3>
@@ -112,6 +112,7 @@ const urlPlaybook = () => {
     </div>
     <slot/>
 </main>
+<br><br>
 <Footer/>
 </html>
 

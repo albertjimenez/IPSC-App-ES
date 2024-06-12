@@ -1,15 +1,15 @@
 ---
 import ShootingsLayout from "../../layouts/ShootingsLayout.astro";
-import {getCollection, getEntry} from 'astro:content';
-import EventCard from "../../components/models/EventCard";
+import {getCollection} from 'astro:content';
+import type EventCard from "../../components/models/EventCard";
 const allShootings = await getCollection('shootings');
-const cards: [EventCard] = allShootings.map(aPost => {
+const cards: EventCard[] = allShootings.map(aPost => {
     return {slug: aPost.slug, ...aPost.data} as EventCard;
 });
 ---
 <ShootingsLayout>
     <main class="shootings-list">
-        <!-- Assume events is the list of EventCard objects sorted by upcoming dates -->
+        <h1><span class="text-gradient">Histórico </span>de tiradas</h1>
         {cards.map(card =>
                 <>
                     <div class="event-card">
@@ -18,9 +18,10 @@ const cards: [EventCard] = allShootings.map(aPost => {
                             <p><strong>Tipo de Arma:</strong> {card.gunType}</p>
                             <p><strong>Fecha y Hora:</strong> {new Date(card.date).toLocaleString()}</p>
                             <p><strong>Ubicación:</strong> {card.location}</p>
-                            {card.url && <p><strong>Sitio Web:</strong> <a data-astro-prefetch href={card.url}
+                            {card.locationURL &&
+                                    <p><strong>Sitio Web:</strong> <a data-astro-prefetch href={card.locationURL}
                                                                            target="_blank" rel="noopener noreferrer"
-                                                                           class="url-link">{card.url}</a></p>}
+                                                                      class="url-link">{card.locationURL}</a></p>}
                         </div>
 
                     </div>
@@ -28,6 +29,13 @@ const cards: [EventCard] = allShootings.map(aPost => {
     </main>
 </ShootingsLayout>
 <style>
+    h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 1em;
+    }
     .shootings-list {
         display: flex;
         flex-direction: column;
@@ -97,5 +105,13 @@ const cards: [EventCard] = allShootings.map(aPost => {
     .url-link:hover,
     .url-link:focus {
         text-decoration: underline;
+    }
+
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
     }
 </style>

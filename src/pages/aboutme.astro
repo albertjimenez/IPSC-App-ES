@@ -1,0 +1,127 @@
+---
+import Header from "../components/Header.astro";
+---
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Eventos de IPSC en España"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <link rel="stylesheet" href="/global.css"/>
+    <title>Tiradas</title>
+</head>
+<Header title="Sobre" subtitle="mí"/>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Albert Sendrós</h1>
+        <hr>
+        <div class="chips-container">
+            <div class="chip">Ingeniero en Informática</div>
+            <div class="chip">Desarrollo de Software</div>
+            <div class="chip">MSc en Inteligencia Artificial</div>
+            <div class="chip">Guidewire</div>
+            <div class="chip">Desarrollador Blockchain Junior</div>
+        </div>
+    </div>
+    <div class="content">
+        <h2>Sobre Mí</h2>
+        <hr>
+        <p>¡Hola! Soy Albert Sendrós, un apasionado desarrollador de software con una sólida formación en informática y
+            un Máster en Inteligencia Artificial. Actualmente, trabajo en Guidewire y también estoy explorando el mundo
+            del desarrollo blockchain.</p>
+        <p>Tengo un conjunto diverso de habilidades y experiencias, desde desarrollo backend en Python y Java, hasta
+            trabajo frontend en React y Angular. Disfruto resolver problemas complejos y siempre estoy ansioso por
+            aprender nuevas tecnologías.</p>
+        <h3>Educación</h3>
+        <hr>
+        <ul>
+            <li>Universidad Jaume I</li>
+            <li>Cork Institute of Technology</li>
+        </ul>
+        <h3>Experiencia</h3>
+        <hr>
+        <p>Actualmente trabajo en Guidewire, donde contribuyo a diversos proyectos que involucran desarrollo de software
+            e inteligencia artificial.</p>
+    </div>
+    <div class="footer">
+        <h3>Contacto</h3>
+        <hr>
+        <p>Conéctate conmigo:</p>
+        <p><a href="https://github.com/albertjimenez" target="_blank" rel="noreferrer">GitHub</a></p>
+        <p><a href="https://www.linkedin.com/in/albert-sendrós-52866064" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>
+<style>
+    .container {
+        margin: auto;
+        padding: 1rem;
+        width: 75%;
+        font-size: 20px;
+        color: white;
+    }
+
+    .header, .content, .footer {
+        background-color: #2f333b;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, h2, h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 1em;
+    }
+
+    a {
+        color: rgb(var(--accent-light));
+        text-decoration: none;
+        border: 1px solid rgba(var(--accent-light), 0.5);
+        border-radius: 15px;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    a:hover {
+        background-color: rgba(var(--accent-light), 0.1);
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .chips-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .chip {
+        background-color: rgb(var(--accent-dark));
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chip:hover {
+        background-color: rgb(var(--accent));
+
+    }
+</style>
+<script>
+    document?.querySelector('.hamburger')?.addEventListener('click', () => {
+        document?.querySelector('.nav-links')?.classList.toggle('expanded');
+    });
+</script>

@@ -3,14 +3,16 @@
 <div class="nav-links">
     <a href="/" class="custom-link">Inicio</a>
     <a href="/shootings" class="custom-link">Tiradas</a>
+    <a href="/aboutme" class="custom-link">Acerca de mí</a>
 </div>
 <style>
     a.custom-link {
         display: inline-block; /* Display as inline block */
         padding: 5px 10px; /* Adjust padding as needed */
         border: 1px solid #007bff; /* Border color */
+        color: white;
         border-radius: 20px; /* Adjust border radius to create rounded corners */
-        color: #007bff; /* Text color */
+        background-color: rgb(var(--accent)); /* Background color on hover */
         text-decoration: none; /* Remove underline */
         transition: background-color 0.3s, color 0.3s; /* Smooth transition */
     }
@@ -18,12 +20,10 @@
     /* Hover state */
     a.custom-link:hover {
         background-color: #007bff; /* Background color on hover */
-        color: white; /* Text color on hover */
     }
 
     /* Active state (when clicked) */
     a.custom-link:active {
         background-color: #0056b3; /* Background color when clicked */
-        color: white; /* Text color when clicked */
     }
 </style>

@@ -8,14 +8,8 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.link-card > a {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-decoration: none;
-    color: white;
+.link-card {
     padding: 16px;
-    background-color: --accent;
     transition: background-color 0.3s ease;
 }
 
@@ -102,4 +96,20 @@ h2 {
     max-width: 100%; /* Make the image responsive */
     max-height: 100%; /* Make the image responsive */
     display: block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #673ab7;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #5e35b1;
 }

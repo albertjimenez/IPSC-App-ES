@@ -5,10 +5,11 @@ export default interface EventCard {
     date: Date;
     location: string;
     level?: string;
-    url?: string;
+    locationURL?: string;
     notes?: string;
     numStages?: number;
     telephoneNumber: number;
     slug: string;
+    email?: string;
 }
 
