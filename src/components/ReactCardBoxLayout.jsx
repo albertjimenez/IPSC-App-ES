@@ -28,7 +28,7 @@ export default function ReactCardBoxLayout({cards = []}) {
                     throw new Error("A post should contain either a 'telephoneNumber' or a 'url' or an 'email'");
                 const fields = [ev.title, ev.location, ev.gunType];
                 if (terms && terms.length > 0)
-                    return fields.some(f => f?.trim().toLowerCase().includes(terms.trim().toLowerCase()));
+                    return fields.some(f => f?.trim().normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().includes(terms.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()));
                 return true
             }).map((eventProps => (
                 <PReactEventCard {...eventProps}></PReactEventCard>
