@@ -9,6 +9,7 @@ html.dark {
 .dark .link-card {
     background-color: #23262d;
 }
+
 :root {
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
@@ -26,16 +27,11 @@ html {
     background-color: #0056b3;
     background-size: 224px;
 }
+
 code {
-    font-family: Menlo,
-    Monaco,
-    Lucida Console,
-    Liberation Mono,
-    DejaVu Sans Mono,
-    Bitstream Vera Sans Mono,
-    Courier New,
-    monospace;
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
 }
+
 .hamburger {
     cursor: pointer;
 }
@@ -50,29 +46,48 @@ code {
 
 .nav-links {
     width: 100%;
-    top: 2rem;
-    left: 10px;
-    background-color: --accent;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    background-color: rgba(0, 86, 179, 1);
     display: none;
     margin: 0;
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .nav-links a {
     display: block;
     text-align: center;
-    padding: 5px 0;
+    padding: 10px 0;
     text-decoration: none;
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.nav-links a:hover, a:focus {
+.nav-links a:hover, .nav-links a:focus {
     background-color: #ff9776;
+    color: #23262d;
 }
 
 .expanded {
-    display: unset;
+    display: block;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media screen and (min-width: 636px) {
@@ -82,11 +97,14 @@ code {
         position: static;
         width: auto;
         background: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
     }
 
     .nav-links a {
         display: inline-block;
-
+        padding: 5px 10px;
     }
 
     .hamburger {

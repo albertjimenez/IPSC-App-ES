@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+const title = "404";
+---
+<Layout title={title}>
+    <div class="container">
+        <div class="error-page">
+
+            <h1 class="error-title">404</h1>
+            <p class="error-message">Lo sentimos, la página que estás buscando no se puede encontrar.</p>
+            <a href="/" class="button">Volver a la Página Principal</a>
+            <br>
+            <img src="/404.webp" alt="404 Image" class="error-image"/>
+        </div>
+    </div>
+</Layout>
+<style>
+    body {
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui, sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        text-align: center;
+    }
+
+    .error-page {
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .error-title {
+        font-size: 4rem;
+        margin: 0;
+        color: rgb(var(--accent));
+    }
+
+    .error-message {
+        font-size: 1.25rem;
+        margin: 1rem 0;
+    }
+
+    .error-image {
+        max-width: 100%;
+        height: auto;
+        margin-top: 1rem;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background-color: rgb(var(--accent));
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+    }
+
+    .button:hover {
+        background-color: rgba(var(--accent-dark), 0.8);
+    }
+
+    @media screen and (min-width: 768px) {
+        .error-title {
+            font-size: 6rem;
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+        }
+
+        .button {
+            font-size: 1.25rem;
+            padding: 1rem 2rem;
+        }
+    }
+
+</style>

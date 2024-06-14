@@ -47,6 +47,7 @@ const urlPlaybook = () => {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
     <link rel="stylesheet" href="/global.css"/>
     <title>Tirada: {title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml"/>
 </head>
 
 <Header title="Eventos"/>
@@ -274,8 +275,4 @@ const urlPlaybook = () => {
 
 </style>
 
-<script>
-    document?.querySelector('.hamburger')?.addEventListener('click', () => {
-        document?.querySelector('.nav-links')?.classList.toggle('expanded');
-    });
-</script>
+<script src="../scripts/hamburguerOnClick.js"/>
