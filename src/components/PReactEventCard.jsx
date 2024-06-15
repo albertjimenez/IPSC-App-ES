@@ -12,9 +12,8 @@ const PReactEventCard = (eventProps) => {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-        hour: 'numeric',
+        hour: '2-digit',
         minute: 'numeric',
-        second: 'numeric'
     };
     const pngPath = pngPaths[gunType];
 

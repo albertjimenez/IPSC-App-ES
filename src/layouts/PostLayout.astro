@@ -48,6 +48,17 @@ const urlPlaybook = () => {
     <link rel="stylesheet" href="/global.css"/>
     <title>Tirada: {title}</title>
     <link rel="sitemap" href="/sitemap-index.xml"/>
+    <meta property="og:title" content={title}/>
+    <meta property="og:description" content="Histórico de tiradas de IPSC"/>
+    <meta property="og:image" content="https://tiradas-ipsc.netlify.app/og_shootings.png"/>
+    <meta property="og:url" content="https://tiradas-ipsc.netlify.app/"/>
+    <meta property="og:type" content="website"/>
+
+    <!-- Twitter Card Meta Tags (Optional) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content="Histórico de tiradas de IPSC">
+    <meta name="twitter:image" content="https://tiradas-ipsc.netlify.app/og_shootings.png">
 </head>
 
 <Header title="Eventos"/>

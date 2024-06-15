@@ -6,6 +6,14 @@ const allShootings = await getCollection('shootings');
 const cards: EventCard[] = allShootings.map(aPost => {
     return {slug: aPost.slug, ...aPost.data} as EventCard;
 });
+const dateOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: 'numeric',
+} as Intl.DateTimeFormatOptions;
 ---
 <ShootingsLayout>
     <main class="shootings-list">
@@ -16,12 +24,13 @@ const cards: EventCard[] = allShootings.map(aPost => {
                         <h2><a href={`/shootings/${card.slug}`}>{card.title}</a></h2>
                         <div class="event-details">
                             <p><strong>Tipo de Arma:</strong> {card.gunType}</p>
-                            <p><strong>Fecha y Hora:</strong> {new Date(card.date).toLocaleString()}</p>
+                            <p><strong>Fecha y
+                                Hora:</strong> {new Date(card.date).toLocaleDateString("es-ES", dateOptions)}</p>
                             <p><strong>Ubicación:</strong> {card.location}</p>
                             {card.locationURL &&
                                     <p><strong>Sitio Web:</strong> <a data-astro-prefetch href={card.locationURL}
                                                                            target="_blank" rel="noopener noreferrer"
-                                                                      class="url-link">{card.locationURL}</a></p>}
+                                                                      class="url-link">Clic aquí</a></p>}
                         </div>
 
                     </div>
