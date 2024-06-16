@@ -30,6 +30,12 @@ export default function ReactCardBoxLayout({cards = []}) {
                 if (terms && terms.length > 0)
                     return fields.some(f => f?.trim().normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().includes(terms.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()));
                 return true
+            }).sort((a, b) => {
+                if (a.date < b.date)
+                    return -1;
+                if (a.date > b.date)
+                    return 1;
+                return 0;
             }).map((eventProps => (
                 <PReactEventCard {...eventProps}></PReactEventCard>
             )))}

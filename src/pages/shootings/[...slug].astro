@@ -1,5 +1,6 @@
 ---
 import {getCollection} from "astro:content";
+
 export async function getStaticPaths() {
     const posts = await getCollection("shootings");
     return posts.map((post) => ({

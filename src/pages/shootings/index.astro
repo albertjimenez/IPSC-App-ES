@@ -14,11 +14,18 @@ const dateOptions = {
     hour: '2-digit',
     minute: 'numeric',
 } as Intl.DateTimeFormatOptions;
+const sortByDate = (a: EventCard, b: EventCard): number => {
+    if (a.date < b.date)
+        return -1;
+    if (a.date > b.date)
+        return 1;
+    return 0;
+}
 ---
 <ShootingsLayout>
     <main class="shootings-list">
         <h1><span class="text-gradient">Histórico </span>de tiradas</h1>
-        {cards.map(card =>
+        {cards.sort(sortByDate).map(card =>
                 <>
                     <div class="event-card">
                         <h2><a href={`/shootings/${card.slug}`}>{card.title}</a></h2>
@@ -27,10 +34,13 @@ const dateOptions = {
                             <p><strong>Fecha y
                                 Hora:</strong> {new Date(card.date).toLocaleDateString("es-ES", dateOptions)}</p>
                             <p><strong>Ubicación:</strong> {card.location}</p>
-                            {card.locationURL &&
-                                    <p><strong>Sitio Web:</strong> <a data-astro-prefetch href={card.locationURL}
-                                                                           target="_blank" rel="noopener noreferrer"
+                            {card.siteURL &&
+                                    <p><strong>Sitio Web:</strong> <a data-astro-prefetch href={card.siteURL}
+                                                                      target="_blank" rel="noopener noreferrer"
                                                                       class="url-link">Clic aquí</a></p>}
+                            {card.mapsURL && <p><strong>Google Maps:</strong> <a href={card.mapsURL} target="_blank"
+                                                                                 rel="noopener noreferrer"
+                                                                                 class="url-link">Clic aquí</a></p>}
                         </div>
 
                     </div>
@@ -45,6 +55,7 @@ const dateOptions = {
         text-align: center;
         margin-bottom: 1em;
     }
+
     .shootings-list {
         display: flex;
         flex-direction: column;

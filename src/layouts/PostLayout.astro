@@ -10,7 +10,8 @@ const {
     date,
     location,
     level,
-    locationURL: url,
+    siteURL: url,
+    mapsURL,
     numStages,
     telephoneNumber,
     notes,
@@ -78,6 +79,17 @@ const urlPlaybook = () => {
             <li><strong>Nivel:</strong> {level || "Sin especificar"}</li>
             <li><strong>Número de stages:</strong> {numStages}</li>
         </ul>
+        <h3>Enlace a Google Maps</h3>
+        <p>
+            <strong>Maps: </strong>
+            <a href={mapsURL} class="map-button" target="_blank" rel="noopener noreferrer">
+                <img
+                        src="https://icons.iconarchive.com/icons/alecive/flatwoken/128/Apps-Google-Maps-icon.png"
+                        width="24" height="24" alt="map"
+                />
+                <span>Google Maps</span>
+            </a>
+        </p>
 
         <h2>Descripción del Evento</h2>
         <p>Únete a nosotros para un emocionante concurso de tiro IPSC en {location}.</p>
@@ -284,6 +296,25 @@ const urlPlaybook = () => {
         text-decoration: underline;
     }
 
+    .map-button {
+        display: inline-flex;
+        align-items: center;
+        background-color: #4caf50;
+        color: #fff;
+        text-decoration: none;
+        padding: 0.2rem 0.2rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .map-button img {
+        margin-right: 0.5rem;
+    }
+
+    .map-button:hover {
+        background-color: rgba(var(--accent-dark), 0.8);
+    }
 </style>
 
-<script src="../scripts/hamburguerOnClick.js"/>

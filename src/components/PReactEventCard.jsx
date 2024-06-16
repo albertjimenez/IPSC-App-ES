@@ -1,7 +1,7 @@
 import "./PReactEventCard.css";
 
 const PReactEventCard = (eventProps) => {
-    const {title, gunType, date, notes, location, level, slug} = eventProps;
+    const {title, gunType, date, notes, location, level, slug, mapsURL} = eventProps;
     const pngPaths = {
         "Pistola": "/Pistola.png",
         "PCC": "/PCC.png",
@@ -16,6 +16,21 @@ const PReactEventCard = (eventProps) => {
         minute: 'numeric',
     };
     const pngPath = pngPaths[gunType];
+
+    const generateMapLink = () => {
+        if (!mapsURL)
+            return <></>
+        return <p>
+            <strong>Maps: </strong>
+            <a href={mapsURL} className="map-button" target="_blank" rel="noopener noreferrer">
+                <img
+                    src="https://icons.iconarchive.com/icons/alecive/flatwoken/128/Apps-Google-Maps-icon.png"
+                    width="24" height="24" alt="map"
+                />
+                <span>Google Maps</span>
+            </a>
+        </p>
+    }
 
     return <>
         <li className="link-card">
@@ -32,7 +47,7 @@ const PReactEventCard = (eventProps) => {
                 {notes && <p><strong>Notas:</strong> {notes}</p>}
                 <p><strong>Ubicación:</strong> {location}</p>
                 {level && <p><strong>Nivel:</strong> {level}</p>}
-                <br/>
+                {generateMapLink()}
                 <a href={`shootings/${slug}`} className={"btn"}>
                     Más información <span>&rarr;</span>
                 </a>
