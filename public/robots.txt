@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Crawl-delay: 3
-Sitemap: https://tiradas-ipsc.netlify.app/sitemap-index.xml
+Sitemap: https://tiradas-ipsc.netlify.app/sitemap-0.xml
