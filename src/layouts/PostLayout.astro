@@ -119,7 +119,11 @@ const urlPlaybook = () => {
 
         <h3>Inscripción</h3>
         <p>Para realizar la inscripción usa uno de estos canales.</p>
-        <p>{telephoneNumber && <a href={`tel:${telephoneNumber}`} class="telephone-link">{telephoneNumber}</a>}</p>
+        <p>{telephoneNumber && <a href={`tel:${telephoneNumber}`} class="telephone-link">
+            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/phone-169-103675.png?f=webp&w=256"
+                 alt="phone icon" width="24" height="24"/>
+            {telephoneNumber}
+        </a>}</p>
         <p>{url && <a href={url} target="_blank" referrerpolicy="no-referrer" class="url-link">Página web</a>}</p>
         <p>{email && <a href={`mailto:${email}`} class="email-link">Correo
             electrónico</a>}</p>
@@ -267,11 +271,26 @@ const urlPlaybook = () => {
         color: rgb(var(--accent-light));
         text-decoration: none;
         border-bottom: 1px dashed rgba(var(--accent-light), 0.5);
+
+
+        display: inline-flex;
+        align-items: center;
+        background-color: rgba(var(--accent-dark), 0.8);
+        padding: 0.2rem 0.2rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
     }
 
     .telephone-link:hover,
     .telephone-link:focus {
         text-decoration: underline;
+        background-color: rgba(var(--accent-dark), 0.8);
+    }
+
+    .telephone-link img {
+        margin-right: 0.5rem;
     }
 
     .email-link {
