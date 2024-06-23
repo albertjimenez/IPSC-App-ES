@@ -27,6 +27,8 @@ export default function ReactCardBoxLayout({cards = []}) {
                 if (!ev.telephoneNumber && !ev.url && !ev.email)
                     throw new Error("A post should contain either a 'telephoneNumber' or a 'url' or an 'email'");
                 const fields = [ev.title, ev.location, ev.gunType];
+                if (new Date() - new Date(ev.date) >= 0)
+                    return false
                 if (terms && terms.length > 0)
                     return fields.some(f => f?.trim().normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().includes(terms.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()));
                 return true
